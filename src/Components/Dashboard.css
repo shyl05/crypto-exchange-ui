@@ -1,0 +1,44 @@
+.card-outer {
+    width: 600px;
+}
+
+.card-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color:lightgray;
+    margin: 0;
+    padding: 0;
+    height: 89.3%;
+}
+
+.input-box {
+    margin: 10px !important;
+    width: 300px;
+}
+
+.exchange-btn {
+    width: 150px;
+    text-align: center;
+}
+
+.output-box {
+    width: 300px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    margin-bottom: 10px !important;
+    margin-top: 15px !important;
+}
+
+.output-box .Mui-disabled{
+    color: green !important;
+}
