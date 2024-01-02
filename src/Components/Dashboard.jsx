@@ -77,7 +77,7 @@ const Dashboard = () => {
             id: selectedCrypto,
             amountType: selectedMoney,
         }
-        if(selectedCrypto === '' && !selectedMoney && !amount) {
+        if(selectedCrypto === '' || !selectedMoney || !amount) {
             setErrorMsg('Enter All Required fields');
             setErrorState(true);
         } else {
@@ -87,10 +87,10 @@ const Dashboard = () => {
                 let currLabel;
                 if(selectedMoney === 'usd'){
                     currLabel = '$';
-                    exchangeVal = amount * response.data.exchangeValue
+                    exchangeVal = amount * response?.data.exchangeValue
                 } else {
                     currLabel = '₹';
-                    exchangeVal = amount * response.data.exchangeValue
+                    exchangeVal = amount * response?.data.exchangeValue
                 }
                 setExchangeAmount(exchangeVal);
                 setExchangeLabel(currLabel);
