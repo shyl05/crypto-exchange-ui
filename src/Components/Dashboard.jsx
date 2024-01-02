@@ -21,7 +21,7 @@ const Dashboard = () => {
     const [cryptoTypes, setCryptoTypes] = React.useState([]);
     const [selectedCrypto, setSelectedCrypto] = React.useState('');
     const [selectedMoney, setSelectedMoney] = React.useState('usd');
-    const [amount, setAmount] = React.useState(0.0);
+    const [amount, setAmount] = React.useState(1.0);
     const [showResult, setShowResult] = React.useState(false);
     const [exchangeAmount, setExchangeAmount] = React.useState('');
     const [exchangeLabel, setExchangeLabel] = React.useState('');
@@ -72,28 +72,33 @@ const Dashboard = () => {
             id: selectedCrypto,
             amountType: selectedMoney,
         }
-        axios.post(`${process.env.REACT_APP_API_URL}/exchange`, reqBody)
-        .then((response)=>{
-            let exchangeVal;
-            let currLabel;
-            if(selectedMoney === 'usd'){
-                currLabel = '$';
-                exchangeVal = amount * response.data.exchangeValue
-            } else {
-                currLabel = '₹';
-                exchangeVal = amount * response.data.exchangeValue
-            }
-            setExchangeAmount(exchangeVal);
-            setExchangeLabel(currLabel);
-            setShowResult(true);
-            setLoading(false);
-        }) 
-        .catch((err)=> {
-            console.log(err);
-            setLoading(false);
-            setErrorMsg('API Error: Network Error');
+        if(selectedCrypto === '' && !selectedMoney && !amount) {
+            setErrorMsg('Enter all required fields');
             setErrorState(true);
-        })
+        } else {
+            axios.post(`${process.env.REACT_APP_API_URL}/exchange`, reqBody)
+            .then((response)=>{
+                let exchangeVal;
+                let currLabel;
+                if(selectedMoney === 'usd'){
+                    currLabel = '$';
+                    exchangeVal = amount * response.data.exchangeValue
+                } else {
+                    currLabel = '₹';
+                    exchangeVal = amount * response.data.exchangeValue
+                }
+                setExchangeAmount(exchangeVal);
+                setExchangeLabel(currLabel);
+                setShowResult(true);
+                setLoading(false);
+            }) 
+            .catch((err)=> {
+                console.log(err);
+                setLoading(false);
+                setErrorMsg('API Error: Network Error');
+                setErrorState(true);
+            })
+        }
     };
 
     React.useEffect(()=>{
