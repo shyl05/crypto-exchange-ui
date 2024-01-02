@@ -1,5 +1,10 @@
 .card-outer {
     width: 600px;
+    border: 1px solid black !important;
+    border-radius: 15px;
+    margin-top: 20px;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 0%);
 }
 
 .card-inner {
@@ -15,10 +20,11 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    background-color:lightgray;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
     margin: 0;
     padding: 0;
-    height: 89.3%;
+    height: 100%;
 }
 
 .input-box {
@@ -26,9 +32,25 @@
     width: 300px;
 }
 
+.input-box .MuiSelect-nativeInput{
+    border: 2px solid black !important;
+}
+
+.input-box .MuiFormHelperText-root {
+    color: black !important;
+    font-size: 14px !important;
+}
+
 .exchange-btn {
     width: 150px;
     text-align: center;
+    background-color: black !important;
+    color: white !important;
+    font-size: 16px !important;
+}
+
+.exchange-btn:hover {   
+    color :#8EC5FC !important;
 }
 
 .output-box {
@@ -41,4 +63,9 @@
 
 .output-box .Mui-disabled{
     color: green !important;
+    font-size: 18px !important;
+}
+
+.output-box input {
+    -webkit-text-fill-color: green !important;
 }

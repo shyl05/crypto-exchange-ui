@@ -7,7 +7,7 @@ import PriceChangeIcon from '@mui/icons-material/PriceChange';
 
 function AppHeader() {
   return (
-    <AppBar position="static">
+    <AppBar position="fixed" color="transparent">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <PriceChangeIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
