@@ -40,7 +40,6 @@ const Dashboard = () => {
         axios.get(`${process.env.REACT_APP_API_URL}/allTypes`)
         .then((response)=>{
             setCryptoTypes(response?.data);
-            setShowResult(true);
             setLoading(false);
         })
         .catch((err)=> {
