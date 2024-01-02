@@ -80,6 +80,7 @@ const Dashboard = () => {
         if(selectedCrypto === '' || !selectedMoney || !amount) {
             setErrorMsg('Enter All Required fields');
             setErrorState(true);
+            setLoading(false);
         } else {
             axios.post(`${process.env.REACT_APP_API_URL}/exchange`, reqBody)
             .then((response)=>{
