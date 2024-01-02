@@ -33,14 +33,19 @@ const Dashboard = () => {
         setErrorState(false);
     };
 
-
     const getCryptoTypes = () => {
         setShowResult(false);
         setLoading(true);
         axios.get(`${process.env.REACT_APP_API_URL}/allTypes`)
         .then((response)=>{
-            setCryptoTypes(response?.data);
-            setLoading(false);
+            if(response.data){
+                setCryptoTypes(response?.data);
+                setLoading(false);
+            } else {
+                setLoading(false);
+                setErrorMsg('API Error: Reached Maximum Fetchs - Upgrade Coingecko Plan');
+                setErrorState(true);
+            }
         })
         .catch((err)=> {
             console.log(err);
@@ -122,7 +127,7 @@ const Dashboard = () => {
                             helperText="* Please select your crypto"
                             onChange={(e) =>handleCryptoChange(e)}
                             >
-                            {cryptoTypes.map((option) => (
+                            {cryptoTypes?.map((option) => (
                                 <MenuItem key={option.id} value={option.id}>
                                 {option.name}
                                 </MenuItem>
